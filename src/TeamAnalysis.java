@@ -10,7 +10,6 @@ public class TeamAnalysis extends Analyzer {
 	public double calculateWinrate(int x, int y){//where x is matches won and y is matches played
 		return (double)x/(double)y;
 	}
-	
 	//need to find a way to get a list of teams 1 team has played against
 	public String[] bestWorstVersusTeam(ArrayList<String> x, ArrayList<Integer> y, ArrayList<Integer> z){
 		ArrayList<String> tags = x; //copy so no modification
@@ -39,7 +38,7 @@ public class TeamAnalysis extends Analyzer {
 		}
 		return new String[] {tags.get(0), tags.get(tags.size()-1)};//as according to percentage
 	}
-	
+
 	public String[] bestVersusDefenses(int[] x){
 		//take most crossed compared to least crossed
 		//refine sorting pls
@@ -61,7 +60,7 @@ public class TeamAnalysis extends Analyzer {
 		}
 		return tag;
 	}
-	
+
 	public String[] topActionsTO(int x[]){
 		//take top action, and also return everything within 30% instances of top action
 		//in TeleOP
@@ -82,28 +81,60 @@ public class TeamAnalysis extends Analyzer {
 		}
 		return tag;
 	}
-	
-	public int[] mostPickedDefensesNum(){
+
+	public int[] mostPickedDefensesNum(int[] dcross){
 		//returns most picked defenses by flat #
-		return (new int[]{});
+		//add tags
+		int[] x = dcross;//copy by value
+		int l = x.length;
+		for (int j=1;j<l;j++){
+			int key = x[j];
+			int i = j - 1;
+			while ((i>-1)&&(x[i]<key)){
+				x[i+1] = x[i];
+				i--;
+			}
+			x[i+1] = key;
+		}
+		return x;
 	}
-	public double[] mostPickedDefenses(){
+	public double[] mostPickedDefenses(int[] dcross){
 		//returns the most picked defenses by percentage
-		return (new double[]{});
+		//need to add tag swaps here too to match end results
+		int[] x = dcross;
+		int l = x.length;
+		double[] p = new double[l];
+		int sum = 0;
+		for(int i=0;i<l;i++){
+			sum+=x[i];
+		}
+		for(int i=0;i<l;i++){
+			p[i] = ((double)x[i])/((double)sum);
+		}
+		for (int j=1;j<l;j++){
+			double key = p[j];
+			int i = j - 1;
+			while ((i>-1)&&(p[i]<key)){
+				p[i+1] = p[i];
+				i--;
+			}
+			p[i+1] = key;
+		}//should return a string end result, add later
+		return p;
 	}
-	
-	public double highGoalRate(){//returns high goal success rate
-		return 0.0;
+
+	public double highGoalRate(int x, int y){//returns high goal success rate
+		return (double)x/(double)y;
 	}
-	
-	public double lowGoalRate(){//returns low goal success rate
-		return 0.0;
+
+	public double lowGoalRate(int x, int y){//returns low goal success rate
+		return (double)(x)/(double)y;
 	}
-	
+
 	public int avgScrMatch(){//returns the average score per match
 		return 0;
 	}
-	
+
 	public int [] getMatchesIn(){//returns matches participated in
 		return (new int[]{});
 	}

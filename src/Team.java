@@ -68,10 +68,10 @@ public class Team {
 			bouldersIntaked_AUTO, lowGoalsScored_AUTO, highGoalsScored_AUTO,
 			defensesReached_AUTO}; //list of possible actions in Autonomous
 	public int[] defensesCrossedTotal = {crossPort_TO+crossPort_AUTO,
-		crossRT_TO+crossRT_AUTO, crossMoat_TO+crossMoat_AUTO,
-		crossRamparts_TO+crossRamparts_AUTO, crossSP_TO+crossSP_AUTO, crossDB_TO+crossDB_AUTO,
-		crossCDF_TO+crossCDF_AUTO, crossLB_TO+crossLB_AUTO, crossRW_TO+crossRW_AUTO};
-	
+			crossRT_TO+crossRT_AUTO, crossMoat_TO+crossMoat_AUTO,
+			crossRamparts_TO+crossRamparts_AUTO, crossSP_TO+crossSP_AUTO, crossDB_TO+crossDB_AUTO,
+			crossCDF_TO+crossCDF_AUTO, crossLB_TO+crossLB_AUTO, crossRW_TO+crossRW_AUTO};
+
 	public Team(){
 		calcTotalTS();
 	}
@@ -88,7 +88,7 @@ public class Team {
 		rollingSum+= defensesReached_AUTO*2;
 		return rollingSum;
 	}
-	
+
 	public int calcAssistTeleOp(){//calculates TeleOp total score
 		int rollingSum = 0;
 		int[] defenses = {crossPort_TO, crossRT_TO, crossMoat_TO,
@@ -103,5 +103,11 @@ public class Team {
 	}
 	public void calcTotalTS(){//calculate total team score
 		collectiveTeamScore = calcAssistAuto() + calcAssistTeleOp();
+	}
+	
+	public String toString(){
+		System.out.println(compAttended);
+		System.out.println(matchesWon);
+		return "";
 	}
 }

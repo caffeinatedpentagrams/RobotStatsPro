@@ -1,9 +1,9 @@
 
 public abstract class Analyzer {
 	public Analyzer(){
-		
+
 	}
-	
+
 	public double[] usageDefenses(int[] defenses){//calculates the usage of defenses in proportion to total crossed
 		int total = 0;
 		double[] x = new double[defenses.length];
@@ -15,7 +15,7 @@ public abstract class Analyzer {
 		}
 		return x;
 	}
-	
+
 	public int[] avgActions(int[] actions, int matchesPlayed){//finds the average instances of every action taken per game
 		int[] arr = new int[actions.length];
 		for(int i=0; i<actions.length; i++){
