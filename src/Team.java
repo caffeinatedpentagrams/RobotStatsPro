@@ -24,7 +24,7 @@ public class Team {
 	public int crossCDF_AUTO = 0; //Chival de Frise
 	public int crossLB_AUTO = 0; //lowbar
 	public int bouldersIntaked_AUTO = 0;
-	public int bouldersIntaked_TO = 0;
+	public int bouldersIntaked_TO = 0;//who cares?
 	//-------------------------------------
 	public int lowGoalsAttempted_TO = 0;
 	public int lowGoalsScored_TO = 0;
